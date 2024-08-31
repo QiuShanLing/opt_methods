@@ -1,3 +1,5 @@
 *.jpg
+*.pkl
 */data_from_kaggle/
-./DeepLearning/小型数据集训练卷积神经网络_CNN/
+*/__pycache__/
+

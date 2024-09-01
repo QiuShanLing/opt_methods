@@ -23,6 +23,7 @@ sol_per_pop = 20 # Number of solutions in the population.
 num_genes = len(function_inputs)
 
 last_fitness = 0
+# 作用:Accepts a function/method to be called after each generation
 def on_generation(ga_instance):
     global last_fitness
     print(f"Generation = {ga_instance.generations_completed}")
@@ -54,10 +55,10 @@ print(f"Predicted output based on the best solution : {prediction}")
 if ga_instance.best_solution_generation != -1:
     print(f"Best fitness value reached after {ga_instance.best_solution_generation} generations.")
 
-# Saving the GA instance.
-filename = 'genetic' # The filename to which the instance is saved. The name is without extension.
-ga_instance.save(filename=filename)
+# # Saving the GA instance.
+# filename = 'genetic' # The filename to which the instance is saved. The name is without extension.
+# ga_instance.save(filename=filename)
 
-# Loading the saved GA instance.
-loaded_ga_instance = pygad.load(filename=filename)
-loaded_ga_instance.plot_fitness()
+# # Loading the saved GA instance.
+# loaded_ga_instance = pygad.load(filename=filename)
+# loaded_ga_instance.plot_fitness()

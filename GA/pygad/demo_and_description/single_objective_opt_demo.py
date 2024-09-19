@@ -1,5 +1,7 @@
 import pygad
 import numpy
+import time
+from tqdm import tqdm
 
 """
 Given the following function:
@@ -23,12 +25,23 @@ sol_per_pop = 20 # Number of solutions in the population.
 num_genes = len(function_inputs)
 
 last_fitness = 0
+
+# crete a progress bar
+pbar = tqdm(total=num_generations)
+
 # 作用:Accepts a function/method to be called after each generation
 def on_generation(ga_instance):
     global last_fitness
     print(f"Generation = {ga_instance.generations_completed}")
     print(f"Fitness    = {ga_instance.best_solution(pop_fitness=ga_instance.last_generation_fitness)[1]}")
     print(f"Change     = {ga_instance.best_solution(pop_fitness=ga_instance.last_generation_fitness)[1] - last_fitness}")
+    if ga_instance.generations_completed != ga_instance.num_generations:
+        time.sleep(0.01)
+        pbar.update(1)
+    else:
+        time.sleep(0.01)
+        pbar.update(1)
+        pbar.close()
     last_fitness = ga_instance.best_solution(pop_fitness=ga_instance.last_generation_fitness)[1]
 
 ga_instance = pygad.GA(num_generations=num_generations,
